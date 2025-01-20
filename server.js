@@ -1,7 +1,7 @@
 const express = require("express");
 const mysql = require("mysql2");
 const cors = require("cors");
-require("dotenv").config();
+// require("dotenv").config();
 const path = require("path");
 
 const app = express();
@@ -9,10 +9,10 @@ app.use(cors({origin:"https://herbany-frontend.vercel.app"}));
 app.use(express.json());
 
 const db = mysql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_DATABASE,
+    host: "localhost",
+    user: "root",
+    password: "root",
+    database: "cosmetci_db/",
 });
 
 db.connect((err) => {
@@ -53,6 +53,6 @@ app.post("/contact", (req, res) => {
     });
   });
 
-const PORT = process.env.PORT || 5000; // Use Render-assigned port
+const PORT = 5000; // Use Render-assigned port
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
