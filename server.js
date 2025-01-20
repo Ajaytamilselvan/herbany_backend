@@ -22,6 +22,10 @@ db.connect((err) => {
 
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
+app.get("/", (req, res) => {
+  res.send("Backend is running on Render!");
+});
+
 // Fetch all products
 app.get("/products", (req, res) => {
   db.query("SELECT * FROM products", (err, results) => {
